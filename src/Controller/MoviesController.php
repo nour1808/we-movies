@@ -25,7 +25,7 @@ class MoviesController extends AbstractController
         $bestMovieId = $this->movieApiService->getBestMovieId();
         $bestMovie = $this->movieApiService->getVideoMovie($bestMovieId);
 
-        $genreId = $request->query->get('with_genre');
+        $genreId = $request->query->get('with_genres');
         $searchQuery = $request->query->get('search');
 
         // Récupérer les films selon le filtre ou la recherche

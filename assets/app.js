@@ -10,7 +10,6 @@
 import './styles/app.scss';
 import 'bootstrap';
 import Swal from 'sweetalert2';
-import Awesomplete from 'awesomplete'
 
 // Fonction pour afficher les détails du film dans une popup
 function showMovieDetails(movieId) {
@@ -63,6 +62,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const searchForm = document.getElementById('searchForm');
+
+    // Initialiser Awesomplete
+    /*new Awesomplete(searchInput, {
+        minChars: 2,
+        autoFirst: true,
+        fetch: function(text, update) {
+            fetch(`/movies?search=${text}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Mappez les résultats pour Awesomplete
+                    update(data.movies);
+                });
+        },
+        item: function(item) {
+            return Awesomplete.$('<div>' + item + '</div>');
+        }
+    });*/
+
     // Gérer la soumission du formulaire
     searchForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -72,7 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = `${baseUrl}/?search=${encodeURIComponent(query)}`;
         }
     });
+
 });
+
+
 
 
 
