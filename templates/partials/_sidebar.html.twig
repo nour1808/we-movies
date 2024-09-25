@@ -1,0 +1,18 @@
+<h6>Genres</h6>
+<form class="mb-4">
+    {% for genre in genres %}
+        <div class="form-check">
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                value="{{ genre.id }}" 
+                id="genre-{{ genre.id }}" 
+                onchange="redirectWithGenre({{ genre.id }})"
+                {% if app.request.query.get('with_genres') == genre.id %}checked{% endif %} 
+            >
+            <label class="form-check-label" for="genre-{{ genre.id }}">
+                {{ genre.name }}
+            </label>
+        </div>
+    {% endfor %}
+</form>

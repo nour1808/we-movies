@@ -1,0 +1,50 @@
+We Movie Project
+
+Requirements
+Before starting, ensure you have the following installed:
+
+PHP >= 8.1
+Composer
+Node.js & npm
+Symfony CLI (optional but recommended)
+
+##Installation Steps
+
+1. Clone the repository
+First, clone the repository to your local machine:
+
+git clone https://github.com/nour1808/we-movies.git
+cd we-movie
+
+2. Install PHP Dependencies
+Install the necessary PHP dependencies using Composer:
+composer install
+
+3. Create .env.local File
+Copy the default environment configuration file .env to .env.local:
+
+cp .env .env.local
+Edit .env.local to configure your database and API keys:
+
+API_URL="https://api.themoviedb.org/3"
+API_KEY="your_api_key"
+
+4. Install Node.js Dependencies
+Use npm to install the required JavaScript dependencies:
+npm install
+
+5. Build Assets
+After installing the dependencies, build the assets with:
+npm run dev
+
+Use npm run build for production builds.
+
+6. Run the Symfony Server
+   You can start the Symfony server with:
+
+symfony server:start
+
+7. Access the Application
+http://127.0.0.1:8000
+
+

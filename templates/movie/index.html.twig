@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}We Movies {% endblock %}
+{% block body %}
+
+<div class="container">
+<div class="container mt-5">
+        <!-- Header -->
+        {{ include('partials/_header.html.twig') }}
+
+        <!-- Main layout -->
+        <div class="row">
+        <!-- Main content: Video and movie listing -->
+            <div class="col-lg-12">
+                <!-- Video section centered -->
+                <div class="text-center mb-4">
+                    {{ include('partials/_best_movie.html.twig', { bestMovie }) }}
+                </div>
+            <div class="row">
+            <!-- Sidebar for genres -->
+            <div class="col-lg-3">
+                {{ include('partials/_sidebar.html.twig', { genres }) }}
+            </div>
+
+            <div class="col-lg-9">
+                <!-- Movie List -->
+                <div class="movie-list">
+                    {% for movie in listMovies %}
+                        <div class="movie-item mb-3">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" class="img-fluid" alt="{{ movie.title }}">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h6>{{ movie.title }}  {{ render_stars(movie.vote_average) }} ({{ movie.vote_count }} votes)</h6>
+                                    <p>{{ movie.release_date | date('Y') }}</p>
+                                    <p>{{ movie.overview }}</p>
+                                    <button class="btn btn-primary btn-details" data-movie-id="{{ movie.id }}">Lire les détails</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>Aucun film trouvé</p>
+                    {% endfor %}
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
