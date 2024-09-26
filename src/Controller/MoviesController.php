@@ -37,11 +37,7 @@ class MoviesController extends AbstractController
             $listMovies = $this->movieApiService->getListMovies();
         }
 
-        return $this->render('movie/index.html.twig', [
-            'genres' => $genres,
-            'bestMovie' => $bestMovie,
-            'listMovies' => $listMovies
-        ]);
+        return $this->render('movie/index.html.twig', compact('genres', 'bestMovie', 'listMovies'));
     }
 
     /**
@@ -52,10 +48,7 @@ class MoviesController extends AbstractController
         $videoMovie = $this->movieApiService->getVideoMovie($id);
         $detailsMovie = $this->movieApiService->getDetailMovie($id);
 
-        return new JsonResponse([
-            'videoMovie' => $videoMovie,
-            'detailsMovie' => $detailsMovie
-        ]);
+        return new JsonResponse(compact('videoMovie', 'detailsMovie'));
     }
 
     /**
